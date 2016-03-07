@@ -1,0 +1,16 @@
+Package: nyccollisions
+Type: Package
+Title: Spatial data on New York City motor vehicle collisions during July 2015
+Version: 0.1.0
+Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
+Description: Spatial data for NYPD Motor Vehicle Collisions from July 2015.  Stored
+  as a SpatialPointsDataFrame.
+URL: https://github.com/sboysel/nyccollisions
+BugReports: http://github.com/sboysel/nyccollisions/issues
+Depends:
+  R (>= 2.10)
+Imports:
+  sp
+LazyData: TRUE
+License: GPL-3
+RoxygenNote: 5.0.1
