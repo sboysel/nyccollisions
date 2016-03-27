@@ -8,9 +8,8 @@ Description: Spatial data for NYPD Motor Vehicle Collisions from July 2015.  Sto
 URL: https://github.com/sboysel/nyccollisions
 BugReports: http://github.com/sboysel/nyccollisions/issues
 Depends:
-  R (>= 2.10)
-Imports:
+  R (>= 2.10),
   sp
 LazyData: TRUE
-License: GPL-3
+License: CC0
 RoxygenNote: 5.0.1
