@@ -26,6 +26,9 @@ collisions <- collisions.raw %>%
   dplyr::select(-location.coordinates,
                 -location.type)
 
+# Reorder columns
+collisions <- collisions[sort(names(collisions))]
+
 # Convert to SpatialPointsDataFrame
 sp::coordinates(collisions) <- ~ longitude + latitude
 sp::proj4string(collisions) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
