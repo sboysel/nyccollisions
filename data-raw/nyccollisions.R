@@ -22,6 +22,7 @@ collisions <- collisions.raw %>%
                 latitude = as.numeric(latitude),
                 date = as.Date(date),
                 datetime = as.character(strptime(paste(date, time), "%Y-%m-%d %H:%M"))) %>%
+  dplyr::mutate_each(funs(as.numeric(.)), starts_with("number")) %>%
   dplyr::select(-location.coordinates,
                 -location.type)
 
