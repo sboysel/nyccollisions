@@ -11,9 +11,9 @@ Install
 devtools::install_github("sboysel/nyccollisions")
 library(nyccollisions)
 ```
-Call the `nyccollisions` object directly
+Call the `collisions` object directly
 ```{r}
-plot(nyccollisions)
+plot(collisions)
 ```
 
 ## Data Source
