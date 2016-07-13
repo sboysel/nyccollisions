@@ -4,16 +4,16 @@ library(sp)
 
 # Fetch NYPD Motor Vehicle Collisions data for July, 2015
 # Source: https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95
-nyccollisions.src.url <- paste0("https://data.cityofnewyork.us/resource/qiz3-axqb.json?",
+collisions.src.url <- paste0("https://data.cityofnewyork.us/resource/qiz3-axqb.json?",
                           "$limit=50000&",
                           "$where=date between '2015-07-01T00:00:00' and '2015-08-01T00:00:00'")
 
-nyccollisions.src.url <- gsub(" ", "%20", nyccollisions.src.url)
+collisions.src.url <- gsub(" ", "%20", collisions.src.url)
 
-nyccollisions.raw <- jsonlite::fromJSON(nyccollisions.src.url, flatten = TRUE)
+collisions.raw <- jsonlite::fromJSON(collisions.src.url, flatten = TRUE)
 
 # Clean data
-nyccollisions <- nyccollisions.raw %>%
+collisions <- collisions.raw %>%
   dplyr::rename(vehicle_type_code_1 = vehicle_type_code1,
                 vehicle_type_code_2 = vehicle_type_code2) %>%
   dplyr::filter(!is.na(longitude),
@@ -26,8 +26,8 @@ nyccollisions <- nyccollisions.raw %>%
                 -location.type)
 
 # Convert to SpatialPointsDataFrame
-sp::coordinates(nyccollisions) <- ~ longitude + latitude
-sp::proj4string(nyccollisions) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
+sp::coordinates(collisions) <- ~ longitude + latitude
+sp::proj4string(collisions) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
 
 # Save
-save(nyccollisions, file = "data/nyccollisions.RData", compress = "xz")
+save(collisions, file = "data/nyccollisions.RData", compress = "xz")
